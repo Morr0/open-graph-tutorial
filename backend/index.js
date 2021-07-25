@@ -4,8 +4,6 @@ const app = express();
 
 const jsdom = require('jsdom');
 
-app.use(express.json());
-
 const getMetaTags = async (url) => {
     const returnable = {};
 
@@ -32,7 +30,7 @@ const getMetaTags = async (url) => {
 };
 
 app.get('/meta', async (req, res) => {
-    const { url } = req.body || {};
+    const { url } = req.query || {};
     if (!url || !url?.includes('http')){
         res.statusCode = 400;
         res.json({
