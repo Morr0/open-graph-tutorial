@@ -1,8 +1,7 @@
 const express = require('express');
 const axios = require('axios');
-const app = express();
-
 const jsdom = require('jsdom');
+const cors = require('cors');
 
 const getMetaTags = async (url) => {
     const returnable = {};
@@ -28,6 +27,12 @@ const getMetaTags = async (url) => {
 
     return returnable;
 };
+
+const app = express();
+
+app.use(cors({
+    origin: '*'
+}));
 
 app.get('/meta', async (req, res) => {
     const { url } = req.query || {};
