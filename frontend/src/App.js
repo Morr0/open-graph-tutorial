@@ -19,8 +19,8 @@ function App() {
           preview
         ];
       });
-      setLoadingPreview(false);
-    });
+    })
+    .finally(() => setLoadingPreview(false));
 
   };
 
